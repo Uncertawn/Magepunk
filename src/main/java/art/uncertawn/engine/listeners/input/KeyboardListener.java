@@ -1,4 +1,4 @@
-package art.uncertawn.listeners.input;
+package art.uncertawn.engine.listeners.input;
 
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
@@ -12,6 +12,7 @@ public class KeyboardListener {
     }
 
     public static void keyCallback(long window, int key, int scancode, int action, int mods) {
+        if (key < 0) return;
         if (action == GLFW_PRESS) {
             get().keyPressed[key] = true;
         } else if (action == GLFW_RELEASE) {

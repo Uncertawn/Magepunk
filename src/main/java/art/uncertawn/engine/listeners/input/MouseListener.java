@@ -1,4 +1,4 @@
-package art.uncertawn.listeners.input;
+package art.uncertawn.engine.listeners.input;
 
 import static org.lwjgl.glfw.GLFW.GLFW_PRESS;
 import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;

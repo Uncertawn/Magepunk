@@ -1,5 +1,7 @@
 package art.uncertawn.engine;
 
+import art.uncertawn.engine.graphics.Color;
+import art.uncertawn.engine.graphics.Colors;
 import art.uncertawn.engine.listeners.input.KeyboardListener;
 import art.uncertawn.engine.listeners.input.MouseListener;
 import art.uncertawn.engine.util.Time;
@@ -19,7 +21,7 @@ public class Window {
 
     private static Window window = null;
 
-    Engine engine;
+    public Engine engine;
 
     private Window() {
         this.width = 640;
@@ -27,6 +29,7 @@ public class Window {
         this.title = "Uncertainty Machina";
 
         engine = new Engine();
+        engine.init();
     }
 
     public static Window get() {
@@ -89,6 +92,8 @@ public class Window {
         GL.createCapabilities();
     }
 
+    public Color clearColor = Colors.White;
+
     public void loop() {
 //        float t = 0.0f;
         float dt = 1.0f/60.0f;
@@ -113,7 +118,7 @@ public class Window {
             // Poll events
             glfwPollEvents();
 
-            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            glClearColor(clearColor.r, clearColor.g, clearColor.b, clearColor.a);
             glClear(GL_COLOR_BUFFER_BIT);
 
             // call engine render update
