@@ -3,7 +3,8 @@ plugins {
 }
 
 group = 'art.uncertawn'
-version = '0.0'
+version = gameVersion
+
 
 repositories {
     mavenCentral()
@@ -16,6 +17,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaExec) {
+    systemProperties System.getProperties()
+    systemProperty 'gameName', project.property('gameName')
+    systemProperty 'gameVersion', project.property('gameVersion')
 }
 
 import org.gradle.internal.os.OperatingSystem

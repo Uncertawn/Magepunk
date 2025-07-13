@@ -1,8 +1,8 @@
 package art.uncertawn.engine;
 
-import art.uncertawn.listeners.input.KeyboardListener;
-import art.uncertawn.listeners.input.MouseListener;
-import art.uncertawn.util.Time;
+import art.uncertawn.engine.listeners.input.KeyboardListener;
+import art.uncertawn.engine.listeners.input.MouseListener;
+import art.uncertawn.engine.util.Time;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
@@ -13,8 +13,8 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
-    private int width, height;
-    private String title;
+    public int width, height;
+    public String title;
     private long glfwWindow;
 
     private static Window window = null;
@@ -24,16 +24,14 @@ public class Window {
     private Window() {
         this.width = 640;
         this.height = 480;
-        this.title = "Magepunk";
+        this.title = "Uncertainty Machina";
 
         engine = new Engine();
     }
 
     public static Window get() {
-        if (Window.window == null) {
+        if (Window.window == null)
             Window.window = new Window();
-        }
-
         return Window.window;
     }
 
@@ -105,7 +103,7 @@ public class Window {
             // https://gafferongames.com/post/fix_your_timestep/#the-final-touch
             while (frameTime > 0.0f) {
                 float deltaTime = Math.min(frameTime, dt);
-                 System.out.println("" + (1.0f/deltaTime) + " " + deltaTime); // print out fps
+//                 System.out.println("" + (1.0f/deltaTime) + " " + deltaTime); // print out fps
                 // engine call physics update
                 engine.tick(deltaTime);
                 frameTime -= deltaTime;
